@@ -3387,7 +3387,7 @@ const lightGroups = {
   par3: { name: '第三排帕灯组', ids: [41, 49], shortcut: 'R' },
   par4: { name: '第四排帕灯组', ids: [50, 58], shortcut: 'T' },
   beam1: { name: '第一排光束灯组', ids: [59, 62], shortcut: 'Y' },
-  beam2: { name: '第二排光束灯组', ids: [63, 66], shortcut: 'U' }
+  beam2: { name: '第二排光束灯组', ids: [63, 68], shortcut: 'U' }
 };
 
 // 灯具组选择函数
