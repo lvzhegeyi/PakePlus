@@ -1,9 +1,22 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>舞台灯光模拟器</title>
+  
+  <!-- 本地字体文件 - 使用系统字体作为备选 -->
   <style>
-    body { margin: 0; }
+    /* 定义字体族 - 优先使用系统字体，确保在pakeplus打包后正常工作 */
+    * {
+      font-family: 'Microsoft YaHei', 'PingFang SC', 'Hiragino Sans GB', 'WenQuanYi Micro Hei', 'SimHei', 'SimSun', 'NSimSun', 'FangSong', 'KaiTi', 'STHeiti', 'STKaiti', 'STSong', 'STFangsong', 'STZhongsong', 'STLiti', 'Arial', 'Helvetica', 'sans-serif';
+    }
+    
+    body { 
+      margin: 0; 
+      font-family: 'Microsoft YaHei', 'PingFang SC', 'Hiragino Sans GB', 'WenQuanYi Micro Hei', 'SimHei', 'SimSun', 'NSimSun', 'FangSong', 'KaiTi', 'STHeiti', 'STKaiti', 'STSong', 'STFangsong', 'STZhongsong', 'STLiti', 'Arial', 'Helvetica', 'sans-serif';
+    }
+    
     #controls, #stage-controls {
       position: fixed;
       background: rgba(0,0,0,0.7);
@@ -11,15 +24,19 @@
       border-radius: 5px;
       color: white;
       z-index: 100;
+      font-family: 'Microsoft YaHei', 'PingFang SC', 'Hiragino Sans GB', 'WenQuanYi Micro Hei', 'SimHei', 'SimSun', 'NSimSun', 'FangSong', 'KaiTi', 'STHeiti', 'STKaiti', 'STSong', 'STFangsong', 'STZhongsong', 'STLiti', 'Arial', 'Helvetica', 'sans-serif';
     }
+    
     #controls {
       top: 20px;
       left: 20px;
     }
+    
     #stage-controls {
       bottom: 20px; 
       left: 20px;
     }
+    
     button {
       margin: 5px;
       padding: 8px;
@@ -28,13 +45,78 @@
       color: white;
       border-radius: 3px;
       cursor: pointer;
+      font-family: 'Microsoft YaHei', 'PingFang SC', 'Hiragino Sans GB', 'WenQuanYi Micro Hei', 'SimHei', 'SimSun', 'NSimSun', 'FangSong', 'KaiTi', 'STHeiti', 'STKaiti', 'STSong', 'STFangsong', 'STZhongsong', 'STLiti', 'Arial', 'Helvetica', 'sans-serif';
     }
+    
     button:hover { background: #1976D2; }
+    
     #gui-container {
       position: fixed;
       top: 20px;
       right: 20px;
       z-index: 100;
+    }
+    
+    /* 确保所有文本元素都使用中文字体 */
+    p, span, div, label, input, textarea, select {
+      font-family: 'Microsoft YaHei', 'PingFang SC', 'Hiragino Sans GB', 'WenQuanYi Micro Hei', 'SimHei', 'SimSun', 'NSimSun', 'FangSong', 'KaiTi', 'STHeiti', 'STKaiti', 'STSong', 'STFangsong', 'STZhongsong', 'STLiti', 'Arial', 'Helvetica', 'sans-serif';
+    }
+    
+    /* 为dat.GUI添加中文字体支持 */
+    .dg.main {
+      font-family: 'Microsoft YaHei', 'PingFang SC', 'Hiragino Sans GB', 'WenQuanYi Micro Hei', 'SimHei', 'SimSun', 'NSimSun', 'FangSong', 'KaiTi', 'STHeiti', 'STKaiti', 'STSong', 'STFangsong', 'STZhongsong', 'STLiti', 'Arial', 'Helvetica', 'sans-serif' !important;
+    }
+    
+    .dg.main .close-button {
+      font-family: 'Microsoft YaHei', 'PingFang SC', 'Hiragino Sans GB', 'WenQuanYi Micro Hei', 'SimHei', 'SimSun', 'NSimSun', 'FangSong', 'KaiTi', 'STHeiti', 'STKaiti', 'STSong', 'STFangsong', 'STZhongsong', 'STLiti', 'Arial', 'Helvetica', 'sans-serif' !important;
+    }
+    
+    .dg.main .folder {
+      font-family: 'Microsoft YaHei', 'PingFang SC', 'Hiragino Sans GB', 'WenQuanYi Micro Hei', 'SimHei', 'SimSun', 'NSimSun', 'FangSong', 'KaiTi', 'STHeiti', 'STKaiti', 'STSong', 'STFangsong', 'STZhongsong', 'STLiti', 'Arial', 'Helvetica', 'sans-serif' !important;
+    }
+    
+    .dg.main .folder .dg {
+      font-family: 'Microsoft YaHei', 'PingFang SC', 'Hiragino Sans GB', 'WenQuanYi Micro Hei', 'SimHei', 'SimSun', 'NSimSun', 'FangSong', 'KaiTi', 'STHeiti', 'STKaiti', 'STSong', 'STFangsong', 'STZhongsong', 'STLiti', 'Arial', 'Helvetica', 'sans-serif' !important;
+    }
+    
+    .dg.main .folder .dg .property-name {
+      font-family: 'Microsoft YaHei', 'PingFang SC', 'Hiragino Sans GB', 'WenQuanYi Micro Hei', 'SimHei', 'SimSun', 'NSimSun', 'FangSong', 'KaiTi', 'STHeiti', 'STKaiti', 'STSong', 'STFangsong', 'STZhongsong', 'STLiti', 'Arial', 'Helvetica', 'sans-serif' !important;
+    }
+    
+    .dg.main .folder .dg .string {
+      font-family: 'Microsoft YaHei', 'PingFang SC', 'Hiragino Sans GB', 'WenQuanYi Micro Hei', 'SimHei', 'SimSun', 'NSimSun', 'FangSong', 'KaiTi', 'STHeiti', 'STKaiti', 'STSong', 'STFangsong', 'STZhongsong', 'STLiti', 'Arial', 'Helvetica', 'sans-serif' !important;
+    }
+    
+    .dg.main .folder .dg input[type=text] {
+      font-family: 'Microsoft YaHei', 'PingFang SC', 'Hiragino Sans GB', 'WenQuanYi Micro Hei', 'SimHei', 'SimSun', 'NSimSun', 'FangSong', 'KaiTi', 'STHeiti', 'STKaiti', 'STSong', 'STFangsong', 'STZhongsong', 'STLiti', 'Arial', 'Helvetica', 'sans-serif' !important;
+    }
+    
+    .dg.main .folder .dg .slider {
+      font-family: 'Microsoft YaHei', 'PingFang SC', 'Hiragino Sans GB', 'WenQuanYi Micro Hei', 'SimHei', 'SimSun', 'NSimSun', 'FangSong', 'KaiTi', 'STHeiti', 'STKaiti', 'STSong', 'STFangsong', 'STZhongsong', 'STLiti', 'Arial', 'Helvetica', 'sans-serif' !important;
+    }
+    
+    .dg.main .folder .dg .slider input[type=text] {
+      font-family: 'Microsoft YaHei', 'PingFang SC', 'Hiragino Sans GB', 'WenQuanYi Micro Hei', 'SimHei', 'SimSun', 'NSimSun', 'FangSong', 'KaiTi', 'STHeiti', 'STKaiti', 'STSong', 'STFangsong', 'STZhongsong', 'STLiti', 'Arial', 'Helvetica', 'sans-serif' !important;
+    }
+    
+    .dg.main .folder .dg .c input[type=text] {
+      font-family: 'Microsoft YaHei', 'PingFang SC', 'Hiragino Sans GB', 'WenQuanYi Micro Hei', 'SimHei', 'SimSun', 'NSimSun', 'FangSong', 'KaiTi', 'STHeiti', 'STKaiti', 'STSong', 'STFangsong', 'STZhongsong', 'STLiti', 'Arial', 'Helvetica', 'sans-serif' !important;
+    }
+    
+    .dg.main .folder .dg .c input[type=number] {
+      font-family: 'Microsoft YaHei', 'PingFang SC', 'Hiragino Sans GB', 'WenQuanYi Micro Hei', 'SimHei', 'SimSun', 'NSimSun', 'FangSong', 'KaiTi', 'STHeiti', 'STKaiti', 'STSong', 'STFangsong', 'STZhongsong', 'STLiti', 'Arial', 'Helvetica', 'sans-serif' !important;
+    }
+    
+    .dg.main .folder .dg .c input[type=checkbox] {
+      font-family: 'Microsoft YaHei', 'PingFang SC', 'Hiragino Sans GB', 'WenQuanYi Micro Hei', 'SimHei', 'SimSun', 'NSimSun', 'FangSong', 'KaiTi', 'STHeiti', 'STKaiti', 'STSong', 'STFangsong', 'STZhongsong', 'STLiti', 'Arial', 'Helvetica', 'sans-serif' !important;
+    }
+    
+    .dg.main .folder .dg .c select {
+      font-family: 'Microsoft YaHei', 'PingFang SC', 'Hiragino Sans GB', 'WenQuanYi Micro Hei', 'SimHei', 'SimSun', 'NSimSun', 'FangSong', 'KaiTi', 'STHeiti', 'STKaiti', 'STSong', 'STFangsong', 'STZhongsong', 'STLiti', 'Arial', 'Helvetica', 'sans-serif' !important;
+    }
+    
+    .dg.main .folder .dg .c button {
+      font-family: 'Microsoft YaHei', 'PingFang SC', 'Hiragino Sans GB', 'WenQuanYi Micro Hei', 'SimHei', 'SimSun', 'NSimSun', 'FangSong', 'KaiTi', 'STHeiti', 'STKaiti', 'STSong', 'STFangsong', 'STZhongsong', 'STLiti', 'Arial', 'Helvetica', 'sans-serif' !important;
     }
     
   </style>
