@@ -83,7 +83,7 @@ class BaseLight {
     
     // 设置文本样式
     context.fillStyle = 'white';
-    context.font = 'bold 24px Arial';
+    context.font = 'bold 24px "Microsoft YaHei", "PingFang SC", "Hiragino Sans GB", "WenQuanYi Micro Hei", "SimHei", "SimSun", "NSimSun", "FangSong", "KaiTi", "STHeiti", "STKaiti", "STSong", "STFangsong", "STZhongsong", "STLiti", Arial, Helvetica, sans-serif';
     context.textAlign = 'center';
     context.textBaseline = 'middle';
     
@@ -126,7 +126,7 @@ class BaseLight {
       
       // 重新绘制文本
       context.fillStyle = 'white';
-      context.font = 'bold 24px Arial';
+      context.font = 'bold 24px "Microsoft YaHei", "PingFang SC", "Hiragino Sans GB", "WenQuanYi Micro Hei", "SimHei", "SimSun", "NSimSun", "FangSong", "KaiTi", "STHeiti", "STKaiti", "STSong", "STFangsong", "STZhongsong", "STLiti", Arial, Helvetica, sans-serif';
       context.textAlign = 'center';
       context.textBaseline = 'middle';
       context.fillText(`ID:${this.id}`, canvas.width / 2, canvas.height / 2);
@@ -1034,6 +1034,7 @@ function createBoxSelectHint() {
   boxSelectHint.style.padding = '8px 16px';
   boxSelectHint.style.borderRadius = '4px';
   boxSelectHint.style.display = 'none';
+  boxSelectHint.style.fontFamily = '"Microsoft YaHei", "PingFang SC", "Hiragino Sans GB", "WenQuanYi Micro Hei", "SimHei", "SimSun", "NSimSun", "FangSong", "KaiTi", "STHeiti", "STKaiti", "STSong", "STFangsong", "STZhongsong", "STLiti", Arial, Helvetica, sans-serif';
   boxSelectHint.textContent = '框选模式（Shift切换 | Ctrl多选）';
   document.body.appendChild(boxSelectHint);
 }
@@ -3167,7 +3168,7 @@ function takePhoto() {
     context.drawImage(img, 0, 0);
     
     // 设置文本样式
-    context.font = '14px Arial';
+    context.font = '14px "Microsoft YaHei", "PingFang SC", "Hiragino Sans GB", "WenQuanYi Micro Hei", "SimHei", "SimSun", "NSimSun", "FangSong", "KaiTi", "STHeiti", "STKaiti", "STSong", "STFangsong", "STZhongsong", "STLiti", Arial, Helvetica, sans-serif';
     context.fillStyle = 'white';
     context.strokeStyle = 'black';
     context.lineWidth = 2;
@@ -3178,12 +3179,12 @@ function takePhoto() {
     // 绘制灯具信息
     // RGB灯信息
     if (Object.keys(lightInfo.rgb).length > 0) {
-      context.font = 'bold 16px Arial';
+      context.font = 'bold 16px "Microsoft YaHei", "PingFang SC", "Hiragino Sans GB", "WenQuanYi Micro Hei", "SimHei", "SimSun", "NSimSun", "FangSong", "KaiTi", "STHeiti", "STKaiti", "STSong", "STFangsong", "STZhongsong", "STLiti", Arial, Helvetica, sans-serif';
       context.strokeText('RGB灯颜色:', 20, yPos);
       context.fillText('RGB灯颜色:', 20, yPos);
       yPos += lineHeight;
       
-      context.font = '14px Arial';
+      context.font = '14px "Microsoft YaHei", "PingFang SC", "Hiragino Sans GB", "WenQuanYi Micro Hei", "SimHei", "SimSun", "NSimSun", "FangSong", "KaiTi", "STHeiti", "STKaiti", "STSong", "STFangsong", "STZhongsong", "STLiti", Arial, Helvetica, sans-serif';
       Object.entries(lightInfo.rgb).forEach(([color, lights]) => {
         const text = `${color}: ${lights.length}个`;
         context.strokeText(text, 30, yPos);
@@ -3195,12 +3196,12 @@ function takePhoto() {
     
     // 面光灯信息
     if (Object.keys(lightInfo.flat).length > 0) {
-      context.font = 'bold 16px Arial';
+      context.font = 'bold 16px "Microsoft YaHei", "PingFang SC", "Hiragino Sans GB", "WenQuanYi Micro Hei", "SimHei", "SimSun", "NSimSun", "FangSong", "KaiTi", "STHeiti", "STKaiti", "STSong", "STFangsong", "STZhongsong", "STLiti", Arial, Helvetica, sans-serif';
       context.strokeText('面光灯亮度(0-255):', 20, yPos);
       context.fillText('面光灯亮度(0-255):', 20, yPos);
       yPos += lineHeight;
       
-      context.font = '14px Arial';
+      context.font = '14px "Microsoft YaHei", "PingFang SC", "Hiragino Sans GB", "WenQuanYi Micro Hei", "SimHei", "SimSun", "NSimSun", "FangSong", "KaiTi", "STHeiti", "STKaiti", "STSong", "STFangsong", "STZhongsong", "STLiti", Arial, Helvetica, sans-serif';
       Object.entries(lightInfo.flat).forEach(([intensity, lights]) => {
         const text = `亮度${intensity}: ${lights.length}个`;
         context.strokeText(text, 30, yPos);
@@ -3212,12 +3213,12 @@ function takePhoto() {
     
     // 光束灯信息
     if (Object.keys(lightInfo.beam).length > 0) {
-      context.font = 'bold 16px Arial';
+      context.font = 'bold 16px "Microsoft YaHei", "PingFang SC", "Hiragino Sans GB", "WenQuanYi Micro Hei", "SimHei", "SimSun", "NSimSun", "FangSong", "KaiTi", "STHeiti", "STKaiti", "STSong", "STFangsong", "STZhongsong", "STLiti", Arial, Helvetica, sans-serif';
       context.strokeText('光束灯颜色:', 20, yPos);
       context.fillText('光束灯颜色:', 20, yPos);
       yPos += lineHeight;
       
-      context.font = '14px Arial';
+      context.font = '14px "Microsoft YaHei", "PingFang SC", "Hiragino Sans GB", "WenQuanYi Micro Hei", "SimHei", "SimSun", "NSimSun", "FangSong", "KaiTi", "STHeiti", "STKaiti", "STSong", "STFangsong", "STZhongsong", "STLiti", Arial, Helvetica, sans-serif';
       Object.entries(lightInfo.beam).forEach(([colorName, lights]) => {
         const text = `${colorName}: ${lights.length}个`;
         context.strokeText(text, 30, yPos);
@@ -3229,7 +3230,7 @@ function takePhoto() {
     // 如果有高亮灯具，添加说明
     if (highlightedLights.length > 0) {
       yPos += 10;
-      context.font = 'italic 14px Arial';
+      context.font = 'italic 14px "Microsoft YaHei", "PingFang SC", "Hiragino Sans GB", "WenQuanYi Micro Hei", "SimHei", "SimSun", "NSimSun", "FangSong", "KaiTi", "STHeiti", "STKaiti", "STSong", "STFangsong", "STZhongsong", "STLiti", Arial, Helvetica, sans-serif';
       context.fillStyle = 'yellow';
       context.strokeStyle = 'black';
       const text = `* 黄色高亮的灯具为数量较少的特殊属性灯具`;
@@ -3435,7 +3436,7 @@ function createLightGroupPanel() {
     border-radius: 10px;
     padding: 15px;
     color: white;
-    font-family: Arial, sans-serif;
+    font-family: 'Microsoft YaHei', 'PingFang SC', 'Hiragino Sans GB', 'WenQuanYi Micro Hei', 'SimHei', 'SimSun', 'NSimSun', 'FangSong', 'KaiTi', 'STHeiti', 'STKaiti', 'STSong', 'STFangsong', 'STZhongsong', 'STLiti', 'Arial', 'Helvetica', 'sans-serif';
     z-index: 1000;
     min-width: 200px;
   `;
@@ -3469,6 +3470,7 @@ function createLightGroupPanel() {
       color: white;
       cursor: pointer;
       font-size: 12px;
+      font-family: 'Microsoft YaHei', 'PingFang SC', 'Hiragino Sans GB', 'WenQuanYi Micro Hei', 'SimHei', 'SimSun', 'NSimSun', 'FangSong', 'KaiTi', 'STHeiti', 'STKaiti', 'STSong', 'STFangsong', 'STZhongsong', 'STLiti', 'Arial', 'Helvetica', 'sans-serif';
       transition: all 0.3s ease;
     `;
     
